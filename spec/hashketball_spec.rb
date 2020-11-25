@@ -132,7 +132,7 @@ describe 'hashketball' do
 
     it 'knows the Brooklyn Nets colors are Black and White' do
       expect(team_colors("Brooklyn Nets")).to contain_exactly("Black", "White")
-      
+
     end
 
     it 'knows the Charlotte Hornets colors are Turquoise and Purple' do
@@ -184,6 +184,38 @@ describe 'hashketball' do
 
     it 'returns the number of rebounds of the player with the biggest shoe size' do
       expect(big_shoe_rebounds).to eq(11)
+    end
+
+  end
+
+  describe '#most_points_scored' do
+
+    it 'returns the name of the player with the most points' do
+      expect(most_points_scored).to eq("Ben Gordon")
+    end
+
+  end
+
+  describe '#winning_team' do
+
+    it 'returns the name of the team with the most points' do
+      expect(winning_team).to eq("Brooklyn Nets")
+    end
+
+  end
+
+  describe '#player_with_longest_name' do
+
+    it 'returns the name of the player with the longest name' do
+      expect(player_with_longest_name).to eq("Bismack Biyombo")
+    end
+
+  end
+
+  describe 'long_name_steals_a_ton?' do
+
+    it 'returns true if the player with the longest name had the most steals' do
+      expect(long_name_steals_a_ton?).to eq(true)
     end
 
   end
