@@ -161,6 +161,8 @@ def num_points_scored(player_name)
       if matching_player
         return matching_player[:points]
       end
+<<<<<<< HEAD
+=======
     end
   end
 
@@ -169,10 +171,27 @@ def shoe_size(player_name)
     matching_player = team_data[:players].find { |player| player[:player_name] == player_name }
     if matching_player
       return matching_player[:shoe]
+>>>>>>> 71bb493352ec5aa36430d60e5ade03a2060fe4e2
+    end
+  end
+
+<<<<<<< HEAD
+def shoe_size(player_name)
+  game_hash.each do |location, team_data|
+    matching_player = team_data[:players].find { |player| player[:player_name] == player_name }
+    if matching_player
+      return matching_player[:shoe]
+=======
+def team_colors(name_arg)
+  game_hash.each do |location, team_data|
+    if team_data[:team_name] == name_arg
+      return team_data[:colors]
+>>>>>>> 71bb493352ec5aa36430d60e5ade03a2060fe4e2
     end
   end
 end
 
+<<<<<<< HEAD
 # def team_colors(name_arg)
 #   game_hash.each do |location, team_data|
 #     if team_data[:team_name] == name_arg
@@ -223,9 +242,43 @@ end
 def player_with_highest(stat_sym)
   player_arr = game_hash.each.with_object([]) { |(k, v), arr| arr.concat(v[:players])}
   player_arr.max_by { |player| player[stat_sym] }
+=======
+def team_names
+  # (game_hash[:home][:team_name] + ", " + game_hash[:away][:team_name]).split(", ")
+  game_hash.map { |location, value| value[:team_name] }
 end
 
+def player_numbers(team_name)
+  team_hash = game_hash.values.find { |location| location[:team_name] == team_name }
+  team_hash[:players].map { |player| player[:number] }
+end
+
+def player_stats(player_name)
+  game_hash.each do |location, team_data|
+    matching_player = team_data[:players].find { |player| player[:player_name] == player_name }
+    if matching_player
+      return matching_player
+    end
+  end
+>>>>>>> 71bb493352ec5aa36430d60e5ade03a2060fe4e2
+end
+
+# def big_shoe_rebounds
+#   shoe_size = 0
+#   rebounds = 0
+#   game_hash.each do |location, team_data|
+#     team_data[:players].each do |player|
+#       if player[:shoe] > shoe_size
+#         shoe_size = player[:shoe]
+#         rebounds = player[:rebounds]
+#       end
+#     end
+#   end
+#   rebounds
+# end
+
 def big_shoe_rebounds
+<<<<<<< HEAD
   big_shoe_player = player_with_highest(:shoe)
   big_shoe_player[:rebounds]
 end
@@ -306,3 +359,62 @@ end
 # end
 #
 # # puts specific_stat_available('turnovers')
+=======
+  player_arr = game_hash.each.with_object([]) { |(k, v), arr| arr.concat(v[:players])}
+  big_shoe_player = player_arr.max_by { |player| player[:shoe] }
+  big_shoe_player[:rebounds]
+end
+
+
+# def most_points_scored
+#   points = 0
+#   mvp = ""
+#   game_hash.each do |location, team_data|
+#     team_data[:players].each do |player|
+#       if player[:points] > points
+#         points = player[:points]
+#         mvp = player[:player_name]
+#       end
+#     end
+#   end
+#   mvp
+# end
+
+def most_points_scored
+  player_arr = game_hash.each.with_object([]) {|(k, v), arr| arr.concat(v[:players])}
+  mvp = player_arr.max_by {|player| player[:points]}
+  mvp[:player_name]
+end
+
+# def winning_team
+#   home_points = game_hash[:home][:players].sum { |player| player[:points] }
+#   away_points = game_hash[:away][:players].sum { |player| player[:points] }
+#
+#   home_points > away_points ? game_hash[:home][:team_name] : game_hash[:away][:team_name]
+# end
+
+def winning_team
+  winner = game_hash.values.max_by { |team_data| team_data[:players].sum{ |player| player[:points] } }
+  winner[:team_name]
+  # home_points = game_hash[:home][:players].sum { |player| player[:points] }
+  # away_points = game_hash[:away][:players].sum { |player| player[:points] }
+  #
+  # home_points > away_points ? game_hash[:home][:team_name] : game_hash[:away][:team_name]
+end
+
+# def winning_team
+#   home_points = 0
+#   away_points = 0
+#   game_hash[:home][:players].each do |player|
+#     home_points += player[:points]
+#   end
+#   game_hash[:away][:players].each do |player|
+#     away_points += player[:points]
+#   end
+#   if home_points > away_points
+#     return game_hash[:home][:team_name]
+#   else
+#     return game_hash[:away][:team_name]
+#   end
+# end
+>>>>>>> 71bb493352ec5aa36430d60e5ade03a2060fe4e2

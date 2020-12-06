@@ -204,6 +204,7 @@ describe 'hashketball' do
 
   end
 
+<<<<<<< HEAD
   describe '#player_with_longest_name' do
 
     it 'returns the name of the player with the longest name' do
@@ -220,4 +221,6 @@ describe 'hashketball' do
 
   end
 
+=======
+>>>>>>> 71bb493352ec5aa36430d60e5ade03a2060fe4e2
 end
